@@ -21,7 +21,7 @@ class Deck
   end
 
   def take_top
-    cards.pop unless cards_left.zero?
+    cards.pop
   end
 
   def cards_left

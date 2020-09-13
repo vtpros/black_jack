@@ -24,4 +24,9 @@ describe Deck do
     deck2.shuffle
     expect(deck1.take_top).not_to eq deck2.take_top
   end
+
+  it 'should return nil for take_top after all cards are taken' do
+    deck1.cards_left.times {deck1.take_top}
+    expect(deck1.take_top).to be nil
+  end
 end
