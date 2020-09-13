@@ -17,10 +17,14 @@ class Deck
   end
 
   def shuffle
-    cards.shuffle
+    cards.shuffle!
   end
 
-  def pop
-    cards.pop unless cards.empty?
-  end  
+  def take_top
+    cards.pop unless cards_left.zero?
+  end
+
+  def cards_left
+    @cards.size
+  end
 end

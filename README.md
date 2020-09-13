@@ -1,2 +1,2 @@
-Black jack game
-Thiknetica ruby basics project
+Black jack text-based game
+Thinknetica ruby basics final project
