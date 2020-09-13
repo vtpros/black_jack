@@ -5,13 +5,11 @@ require_relative 'resource/card_constants'
 
 # Card class
 class Deck
-  attr_reader :cards
-
   def initialize
     @cards = []
     SUITS.each do |suit|
       RANK_WITH_VALUE.each do |rank, value|
-        self.cards << Card.new(suit: suit, rank: rank, value: value)
+        cards << Card.new(suit: suit, rank: rank, value: value)
       end
     end
   end
@@ -27,4 +25,8 @@ class Deck
   def cards_left
     @cards.size
   end
+
+  private
+
+  attr_reader :cards
 end

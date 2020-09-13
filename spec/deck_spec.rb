@@ -31,4 +31,8 @@ describe Deck do
     deck1.cards_left.times {deck1.take_top}
     expect(deck1.take_top).to be nil
   end
+
+  it 'should print rank and suit' do
+    expect(Deck.new.take_top.to_s).to eq('A♣')
+  end
 end

@@ -17,6 +17,10 @@ class Card
     suit == card.suit && rank == card.rank
   end
 
+  def to_s
+    "#{rank}#{suit}"
+  end
+
   private
 
   def validate!(suit, rank)
