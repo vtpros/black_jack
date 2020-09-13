@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Test for Deck and Card classes
+
 require_relative '../deck'
 
 deck1 = Deck.new
@@ -10,12 +12,12 @@ describe Deck do
     expect(deck1.take_top).to eq deck2.take_top
   end
 
-  it 'should decrease cards left after taken card' do
+  it 'should decrease cards left after card is taken' do
     expect(deck1.cards_left).to eq 51
     expect(deck2.cards_left).to eq 51
   end
 
-  it 'should have same value for the cards with same suit and rank' do
+  it 'should have same value for the cards with the same suit and rank' do
     expect(deck1.take_top.value).to eq deck2.take_top.value
   end
 
