@@ -4,7 +4,7 @@ require_relative 'resource/card_constants'
 
 # Card class
 class Card
-  attr_accessor :suit, :rank, :value
+  attr_reader :suit, :rank, :value
 
   def initialize(suit:, rank:, value:)
     validate!(suit, rank)
@@ -13,8 +13,8 @@ class Card
     @value = value
   end
 
-  def ==(card)
-    suit == card.suit && rank == card.rank
+  def ==(other)
+    suit == other.suit && rank == other.rank
   end
 
   def to_s

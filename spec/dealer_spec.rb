@@ -15,7 +15,10 @@ describe Dealer do
     expect(dealer.deal_card).not_to eq Deck.new.take_top
   end
 
-  it 'should __' do
-    expect(1).to eq 1
+  it 'should count cards with aces correctly' do
+    cards = [Card.new(suit: '♣', rank: 'A', value: 1)]
+    cards << Card.new(suit: '♦', rank: 'A', value: 1)
+    cards << Card.new(suit: '♦', rank: '9', value: 9)
+    expect(dealer.count_cards(cards)).to eq 21
   end
 end
