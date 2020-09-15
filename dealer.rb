@@ -8,14 +8,18 @@ class Dealer
   include Players
 
   def initialize
+    @name = 'Dealer'
     self.deposit = INITIAL_DEPOSIT
     @cards = []
+  end
+
+  def new_deck
     @deck = Deck.new
     deck.shuffle
   end
 
   def open_cards
-    "Dealer: #{cards_print} (#{points} points)"
+    "Dealer: #{cards_print}, #{points} points (#{deposit}$)"
   end
 
   def deal_card
@@ -23,7 +27,7 @@ class Dealer
   end
 
   def to_s
-    "Dealer: #{print_closed_cards} (? points)"
+    "Dealer: #{print_closed_cards}, ? points (#{deposit}$)"
   end
 
   private

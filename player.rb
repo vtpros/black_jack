@@ -6,8 +6,6 @@ require_relative 'resource/players'
 class Player
   include Players
 
-  attr_reader :name
-
   def initialize(name:)
     @name = name
     self.deposit = INITIAL_DEPOSIT
@@ -15,6 +13,8 @@ class Player
   end
 
   def to_s
-    "#{name}: #{cards_print} (#{points} points)"
+    point = points
+    point = "#{min_points}/#{points}" if min_points < points
+    "#{name}: #{cards_print}, #{point} points (#{deposit}$)"
   end
 end

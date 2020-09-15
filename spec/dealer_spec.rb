@@ -12,6 +12,7 @@ describe Dealer do
   end
 
   it 'should deal a card from a shuffled deck' do
+    dealer.new_deck
     expect(dealer.deal_card).not_to eq Deck.new.take_top
   end
 

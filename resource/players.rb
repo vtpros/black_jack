@@ -6,7 +6,7 @@ require_relative 'card_constants'
 module Players
   INITIAL_DEPOSIT = 100
 
-  attr_reader :deposit
+  attr_reader :deposit, :name
 
   def num_cards
     cards.size
@@ -21,21 +21,32 @@ module Players
     sum
   end
 
+  def receive_money(sum)
+    self.deposit += sum
+  end
+
+  def min_points
+    cards.map(&:value).sum
+  end
+
   def points
-    total = 0
-    ace = false
-    cards.each do |card|
-      total += card.value
-      ace ||= (card.rank == 'A')
-    end
-    (total += REMAINDER unless total + REMAINDER > MAX_POINTS) if ace
+    total = min_points
+    (total += REMAINDER unless total + REMAINDER > MAX_POINTS) if ace?
     total
+  end
+
+  def reset
+    @cards = []
   end
 
   private
 
   attr_reader :cards
   attr_writer :deposit
+
+  def ace?
+    cards.any? { |card| card.rank == 'A' }
+  end
 
   def cards_print
     cards.map { |card| "#{card.rank}#{card.suit}" }.join(' ')
