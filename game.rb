@@ -38,14 +38,15 @@ class Game
   def cycle
     loop do
       break if no_deposit?
+
       interface.print_table(dealer: dealer, player: player, bank: bank)
       choice = interface.ask_next(have_three: three?(player))
       result = send(choice)
       dealer_turn if result == :dealer_turn
-      break if break?(result)
+      break if result == :finish
 
       result = open_cards if three_both?
-      break if break?(result)
+      break if result == :finish
 
       initial_deal if result == :continue
     end
@@ -107,9 +108,5 @@ class Game
     result = player.deposit.negative? || dealer.deposit.negative?
     interface.no_deposit if result
     result
-  end
-
-  def break?(result)
-    result == :finish || no_deposit?
   end
 end

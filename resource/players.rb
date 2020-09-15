@@ -4,7 +4,7 @@ require_relative 'card_constants'
 
 # Player and Dealer common methods
 module Players
-  INITIAL_DEPOSIT = 100
+  INITIAL_DEPOSIT = 10
 
   attr_reader :deposit, :name
 
