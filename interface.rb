@@ -56,4 +56,8 @@ class Interface
     end
     OPTIONS[choice]
   end
+
+  def no_deposit
+    puts 'No money to stake'
+  end
 end
